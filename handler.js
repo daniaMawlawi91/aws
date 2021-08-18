@@ -2,6 +2,11 @@
 
 module.exports.hello = async (event, context, callback) => {
   let message = 'Hello World';
+  const name = event.queryStringParameters && event.queryStringParameters.name;
+  if (name !== null) {
+    message = 'Hello ' + name;
+
+  }
   const response = {
     statusCode: 200,
     body: JSON.stringify({
